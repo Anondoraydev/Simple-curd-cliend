@@ -7,16 +7,22 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Users from './Users.jsx';
+import Update from './Update.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
   },
   {
-    path:'/users',
-    element:<Users/>, 
-    loader:()=>fetch('http://localhost:5000/users')
+    path: '/users',
+    element: <Users />,
+    loader: () => fetch('http://localhost:5000/users')
+  },
+  {
+    path: '/update/:id',
+    element: <Update />,
+    loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
   }
 ]);
 
